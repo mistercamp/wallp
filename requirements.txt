@@ -1,0 +1,3 @@
+PyQt6
+split_image
+requests

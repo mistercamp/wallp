@@ -1,0 +1,16 @@
+[Unit]
+After=network.service
+PartOf=graphical-session.target
+
+[Service]
+User = __USER__
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=__HOME__/.Xauthority
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+WorkingDirectory=/opt/wallp
+ExecStart=/opt/wallp/.venv/bin/python3 /opt/wallp/wallp.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
