@@ -58,6 +58,9 @@ def write_json(key, value, cat_flag):
         json.dump(file_data, file)
 
 def set_next():
+    if not len(os.listdir(pwd + '/tmp/')) == 0:
+        for f in os.listdir(pwd + '/tmp/'):
+            os.remove(pwd + '/tmp/' + f)
     query = get_query_category()      
     image_url = "https://source.unsplash.com/random/3840x1080/?" + query
     filename = 'img_' + str(time.strftime("%Y%m%d_%H%M%S")) + '.jpg'
@@ -75,9 +78,10 @@ def set_next():
         split_image(pwd + '/tmp/' + filename, 1, 2, False, False, True, pwd + '/tmp/')
         filename, ext = os.path.splitext(filename)
         subprocess.run(get_command_str(pwd + '/tmp/' + filename, ext), shell = True, executable="/bin/bash")
-        time.sleep(1)
+        time.sleep(.5)
         for f in os.listdir(pwd + '/tmp/'):
-            os.remove(pwd + '/tmp/' + f)
+            if not f == filename + ext:
+                os.remove(pwd + '/tmp/' + f)
     except:
         pass      
         
@@ -109,6 +113,8 @@ def set_categories(key):
     
 def set_save(value):
     write_json("save", value, False)
+    if value == "True":
+        shutil.copyfile(pwd + '/tmp/' + os.listdir(pwd+ '/tmp')[0], pwd + '/img/' + os.listdir(pwd+ '/tmp')[0])
     print('Save set:', value)
 
 def timer_loop(value):
@@ -136,13 +142,11 @@ if __name__ == '__main__':
     ############### Menu Config ###############
     app = QApplication([])
     app.setQuitOnLastWindowClosed(False)
-    # Adding an icon
     icon = QIcon(pwd + "/icon.png")
-    # Adding item on the menu bar
     tray = QSystemTrayIcon()
     tray.setIcon(icon)
     tray.setVisible(True)
-    # Create Menu
+
     menu = QMenu()
 
     ################ Next Menu ################    
@@ -202,4 +206,3 @@ if __name__ == '__main__':
     
     ################ Start App ################
     app.exec()
-    

@@ -4,9 +4,9 @@ PartOf=graphical-session.target
 
 [Service]
 User = __USER__
-Environment=DISPLAY=:0
-Environment=XAUTHORITY=__HOME__/.Xauthority
-Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=DISPLAY=__DISPLAY__
+Environment=XAUTHORITY=__XAUTH__
+Environment=XDG_RUNTIME_DIR=__XDGRUN__
 WorkingDirectory=/opt/wallp
 ExecStart=/opt/wallp/.venv/bin/python3 /opt/wallp/wallp.py
 Restart=on-failure

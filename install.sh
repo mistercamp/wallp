@@ -2,6 +2,7 @@
 
 INSTALL_LOC='/opt/wallp'
 
+
 echo "SUDO required for install"
 sudo mkdir -p $INSTALL_LOC/{tmp,img}
 sudo cp -r * $INSTALL_LOC
@@ -10,7 +11,9 @@ sudo $INSTALL_LOC/.venv/bin/python3 -m pip install -r $INSTALL_LOC/requirements.
 sudo chown -R $USER:$USER $INSTALL_LOC
 
 sed -i "s|__USER__|$USER|" wallp.service
-sed -i "s|__HOME__|$HOME|" wallp.service
+sed -i "s|__DISPLAY__|$DISPLAY|" wallp.service
+sed -i "s|__XAUTH__|$XAUTHORITY|" wallp.service
+sed -i "s|__XDGRUN__|$XDG_RUNTIME_DIR|" wallp.service
 
 if [ -f /etc/systemd/system/wallp.service ]; then
     sudo systemctl stop wallp.service
