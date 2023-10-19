@@ -13,6 +13,7 @@ sudo chown -R $USER:$USER $INSTALL_LOC
 
 sed -i "s|__USER__|$USER|" wallp.service
 sed -i "s|__DISPLAY__|$DISPLAY|" wallp.service
+sed -i "s|__XAUTH__|$XAUTHORITY|" wallp.service
 sed -i "s|__XDGRUN__|$XDG_RUNTIME_DIR|" wallp.service
 
 if [ -f /etc/systemd/system/wallp.service ]; then
