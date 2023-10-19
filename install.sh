@@ -4,7 +4,7 @@ INSTALL_LOC='/opt/wallp'
 
 
 echo "SUDO required for install"
-sudo apt install python3-venv
+sudo apt install python3-venv -y
 sudo mkdir -p $INSTALL_LOC/{tmp,img}
 sudo cp -r * $INSTALL_LOC
 sudo python3 -m venv $INSTALL_LOC/.venv
