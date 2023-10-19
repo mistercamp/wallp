@@ -3,7 +3,7 @@
 INSTALL_LOC='/opt/wallp'
 
 echo "SUDO required for install"
-sudo mkdir $INSTALL_LOC
+sudo mkdir -p $INSTALL_LOC/{tmp,img}
 sudo cp -r * $INSTALL_LOC
 sudo python3 -m venv $INSTALL_LOC/.venv
 sudo $INSTALL_LOC/.venv/bin/python3 -m pip install -r $INSTALL_LOC/requirements.txt
