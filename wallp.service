@@ -5,7 +5,6 @@ PartOf=graphical-session.target
 [Service]
 User = __USER__
 Environment=DISPLAY=__DISPLAY__
-Environment=XAUTHORITY=__XAUTH__
 Environment=XDG_RUNTIME_DIR=__XDGRUN__
 WorkingDirectory=/opt/wallp
 ExecStart=/opt/wallp/.venv/bin/python3 /opt/wallp/wallp.py
