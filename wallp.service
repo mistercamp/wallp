@@ -3,7 +3,7 @@ After=network.service
 PartOf=graphical-session.target
 
 [Service]
-User = __USER__
+User=__USER__
 Environment=DISPLAY=__DISPLAY__
 Environment=XAUTHORITY=__XAUTH__
 Environment=XDG_RUNTIME_DIR=__XDGRUN__
