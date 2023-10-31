@@ -7,8 +7,8 @@ User=__USER__
 Environment=DISPLAY=__DISPLAY__
 Environment=XAUTHORITY=__XAUTH__
 Environment=XDG_RUNTIME_DIR=__XDGRUN__
-WorkingDirectory=/opt/wallp
-ExecStart=/opt/wallp/.venv/bin/python3 /opt/wallp/wallp.py
+WorkingDirectory=__INSTALL_LOC__
+ExecStart=__INSTALL_LOC__/.venv/bin/python3 __INSTALL_LOC__/wallp.py
 Restart=on-failure
 RestartSec=5
 
