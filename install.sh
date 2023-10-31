@@ -10,7 +10,7 @@ sudo python3 -m venv $INSTALL_LOC/.venv
 sudo $INSTALL_LOC/.venv/bin/python3 -m pip install -r $INSTALL_LOC/requirements.txt
 sudo chown -R $USER:$USER $INSTALL_LOC
 
-sed -i "s|__USER__|$USER| ; s|__DISPLAY__|$DISPLAY| ; s|__XAUTH__|$XAUTHORITY| ; s|__XDGRUN__|$XDG_RUNTIME_DIR|" wallp.service
+sed -i "s|__USER__|$USER| ; s|__DISPLAY__|$DISPLAY| ; s|__XAUTH__|$XAUTHORITY| ; s|__XDGRUN__|$XDG_RUNTIME_DIR| ; s|__INSTALL_LOC__|$INSTALL_LOC|g" wallp.service
 
 if [ -f /etc/systemd/system/wallp.service ]; then
     sudo systemctl stop wallp.service
